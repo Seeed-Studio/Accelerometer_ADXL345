@@ -4,7 +4,7 @@ Grove_3Axis_Digital_Accelerometer_ADXL345
 
 This is a high resolution digital accelerometer providing you at max 3.9mg/LSB resolution and large ±16g measurement range. It's base on an advanced 3-axis IC ADXL345. Have no worry to implement it into your free-fall detection project, cause it's robust enough to survive upto 10,000g shock. Meanwhile, it's agile enough to detect single and double taps.It's ideal for motion detection, Gesture detection as well as robotics.
 
-For more information, please refer to [Grove - 3-Axis Digital Accelerometer(±16g)](http://www.seeedstudio.com/wiki/Grove_-_3-Axis_Digital_Accelerometer(%C2%B116g))
+For more information, please refer to [Grove - 3-Axis Digital Accelerometer(±16g)](http://www.seeedstudio.com/wiki/Grove_-_3-Axis_Digital_Accelerometer(%C2%B116g)
 
 ----
 This software is written by Frankie Chu for seeed studio<br>
