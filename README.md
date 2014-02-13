@@ -24,5 +24,5 @@ global distributors and partners to push open hardware movement.<br>
 [1]: http://www.seeedstudio.com/wiki/Grove_-_3-Axis_Digital_Accelerometer(%C2%B116g)
 
 
-
+[![Analytics](https://ga-beacon.appspot.com/UA-46589105-3/Grove_3Axis_Digital_Accelerometer_ADXL345)](https://github.com/igrigorik/ga-beacon)
 
