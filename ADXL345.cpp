@@ -1,11 +1,15 @@
 /*****************************************************************************/
 //	Function:    Cpp file for class ADXL345
-//  Hardware:    3-Axis Digital Accelerometer(¡À16g)
+//  Hardware:    3-Axis Digital Accelerometer(ï¿½ï¿½16g)
 //	Arduino IDE: Arduino-1.0
 //	Author:	 Frankie.Chu		
 //	Date: 	 Jan 11,2013
 //	Version: v1.0
 //	by www.seeedstudio.com
+//
+//  Modify Loovee,
+//  2014-7-19
+//  fix some bug when using 32bit system
 //
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
@@ -52,12 +56,9 @@ void ADXL345::readAccel(int *xyz){
 }
 void ADXL345::readXYZ(int *x, int *y, int *z) {
 	readFrom(ADXL345_DATAX0, ADXL345_TO_READ, _buff); //read the acceleration data from the ADXL345
-	
-	// each axis reading comes in 10 bit resolution, ie 2 bytes.  Least Significat Byte first!!
-	// thus we are converting both bytes in to one int
-	*x = (((int)_buff[1]) << 8) | _buff[0];   
-	*y = (((int)_buff[3]) << 8) | _buff[2];
-	*z = (((int)_buff[5]) << 8) | _buff[4];
+	*x = (short)((((unsigned short)_buff[1]) << 8) | _buff[0]);   
+	*y = (short)((((unsigned short)_buff[3]) << 8) | _buff[2]);
+	*z = (short)((((unsigned short)_buff[5]) << 8) | _buff[4]);
 }
 
 void ADXL345::getAcceleration(double *xyz){
