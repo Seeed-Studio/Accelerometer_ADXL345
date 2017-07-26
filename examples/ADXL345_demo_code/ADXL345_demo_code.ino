@@ -106,7 +106,7 @@ void loop(){
 	Serial.print(ay);
     Serial.println(" g");
 	Serial.print("Z=");
-	Serial.println(az);
+	Serial.print(az);
     Serial.println(" g");
 	Serial.println("**********************");
 	delay(500);
