@@ -1,0 +1,87 @@
+  
+#######################################
+# Syntax Coloring Map For Seeed Wio GPS Board
+#######################################
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+GPSTracker	KEYWORD1
+BlueTooth	KEYWORD1
+GNSS	KEYWORD1
+GPRS	KEYWORD1
+serialMC20	KEYWORD1
+serialDebug	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+Check_If_Power_On	KEYWORD2
+Power_On	KEYWORD2
+powerReset	KEYWORD2
+io_init	KEYWORD2
+waitForNetworkRegister	KEYWORD2
+sendSMS	KEYWORD2
+readSMS	KEYWORD2
+deleteSMS	KEYWORD2
+callUp	KEYWORD2
+answer	KEYWORD2
+hangup	KEYWORD2
+getSignalStrength	KEYWORD2
+recv	KEYWORD2
+GSM_work_mode	KEYWORD2
+GSM_config_slow_clk	KEYWORD2
+AT_PowerDown	KEYWORD2
+checkSIMStatus	KEYWORD2
+
+init	KEYWORD2
+join	KEYWORD2
+BTPowerOn	KEYWORD2  
+BTPowerOff	KEYWORD2
+scanForTargetDevice	KEYWORD2 
+sendPairingReqstToDevice	KEYWORD2  
+acceptPairing	KEYWORD2
+unPair	KEYWORD2
+acceptConnect	KEYWORD2
+loopHandle	KEYWORD2
+disconnect	KEYWORD2
+getBTState	KEYWORD2
+getPairedDeviceID	KEYWORD2
+BTConnectPairedDevice	KEYWORD2  
+BTFastConnect	KEYWORD2
+
+Check_If_Power_On	KEYWORD2
+networkCheck	KEYWORD2
+connectTCP	KEYWORD2
+sendTCPData	KEYWORD2
+closeTCP	KEYWORD2
+
+initialize	KEYWORD2
+open_GNSS	KEYWORD2
+close_GNSS	KEYWORD2
+open_GNSS_default_mode	KEYWORD2
+open_GNSS_EPO_quick_mode	KEYWORD2
+open_GNSS_EPO_LP_mode	KEYWORD2
+open_GNSS_RL_mode	KEYWORD2
+oopen_GNSS	KEYWORD2
+settingContext	KEYWORD2
+isNetworkRegistered	KEYWORD2
+isTimeSynchronized	KEYWORD2
+enableEPO	KEYWORD2
+triggerEPO	KEYWORD2
+getCoordinate	KEYWORD2
+dataFlowMode	KEYWORD2
+
+Enable_EASY	KEYWORD2
+Enable_GLP	KEYWORD2
+Set_DGPS_Mode	KEYWORD2
+GetQueryStatus_LOCUS	KEYWORD2
+EraseFlash_LOCUS	KEYWORD2
+StopLogger_LOCUS	KEYWORD2
+QueryData_LOCUS	KEYWORD2
+SetPeriodicMode	KEYWORD2
+Set1PPS	KEYWORD2
+SetAlwaysLocateMode	KEYWORD2
+Select_searching_satellite	KEYWORD2
+SetWorkMode	KEYWORD2
+SetStandbyMode	KEYWORD2
