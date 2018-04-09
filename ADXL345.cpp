@@ -84,8 +84,6 @@ void ADXL345::readFrom(byte address, int num, byte _buff[]) {
     Wire.beginTransmission(ADXL345_DEVICE); // start transmission to device 
     Wire.write(address);             // sends address to read from
     Wire.endTransmission();         // end transmission
-    
-    Wire.beginTransmission(ADXL345_DEVICE); // start transmission to device
     Wire.requestFrom(ADXL345_DEVICE, num);    // request 6 bytes from device
     
     int i = 0;
@@ -98,7 +96,6 @@ void ADXL345::readFrom(byte address, int num, byte _buff[]) {
         status = ADXL345_ERROR;
         error_code = ADXL345_READ_ERROR;
     }
-    Wire.endTransmission();         // end transmission
 }
 
 // Gets the range setting and return it into rangeSetting
