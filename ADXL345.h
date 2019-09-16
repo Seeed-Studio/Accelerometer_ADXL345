@@ -112,6 +112,12 @@
 #define ADXL345_READ_ERROR 1 // problem reading accel
 #define ADXL345_BAD_ARG    2 // bad method argument
 
+#define ADXL345_MODE_BYPASS 0x00 	//0000
+#define ADXL345_MODE_FIFO 0x01 		//0001
+#define ADXL345_MODE_STREM 0x02 	//0010
+#define ADXL345_MODE_TRIGGER 0x03 	//0011
+
+
 class ADXL345
 {
 public:
@@ -201,6 +207,13 @@ public:
     void setInterruptMapping(byte interruptBit, bool interruptPin);
     bool isInterruptEnabled(byte interruptBit);
     void setInterrupt(byte interruptBit, bool state);
+	
+	
+	void setMode(byte modeBit); // setting operation mode
+	byte getMode(); 
+	void setWatermark(byte watermark);
+	byte getFifoEntries(void);		// reading number of samples from fifo
+	void burstReadXYZ(int *x, int *y, int *z, byte samples);  // burst read function for getting all samples from fifo 
     
     void getRangeSetting(byte* rangeSetting);
     void setRangeSetting(int val);
@@ -215,7 +228,7 @@ public:
     bool getJustifyBit();
     void setJustifyBit(bool justifyBit);
     void printAllRegister();
-    
+
 private:
     void writeTo(byte address, byte val);
     void readFrom(byte address, int num, byte buff[]);

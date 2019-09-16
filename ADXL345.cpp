@@ -84,6 +84,8 @@ void ADXL345::readFrom(byte address, int num, byte _buff[]) {
     Wire.beginTransmission(ADXL345_DEVICE); // start transmission to device 
     Wire.write(address);             // sends address to read from
     Wire.endTransmission();         // end transmission
+    
+    Wire.beginTransmission(ADXL345_DEVICE); // start transmission to device
     Wire.requestFrom(ADXL345_DEVICE, num);    // request 6 bytes from device
     
     int i = 0;
@@ -96,6 +98,7 @@ void ADXL345::readFrom(byte address, int num, byte _buff[]) {
         status = ADXL345_ERROR;
         error_code = ADXL345_READ_ERROR;
     }
+    Wire.endTransmission();         // end transmission
 }
 
 // Gets the range setting and return it into rangeSetting
@@ -500,7 +503,8 @@ void ADXL345::setLowPower(bool state) {
 double ADXL345::getRate(){
     byte _b;
     readFrom(ADXL345_BW_RATE, 1, &_b);
-    _b &= B00001111;
+
+	_b &= B00001111;
     return (pow(2,((int) _b)-6)) * 6.25;
 }
 
@@ -601,6 +605,8 @@ void ADXL345::setRegisterBit(byte regAdress, int bitPos, bool state) {
     writeTo(regAdress, _b);  
 }
 
+
+
 bool ADXL345::getRegisterBit(byte regAdress, int bitPos) {
     byte _b;
     readFrom(regAdress, 1, &_b);
@@ -625,6 +631,63 @@ void ADXL345::printAllRegister() {
         Serial.println("");    
     }
 }
+
+// set the operation mode
+
+void ADXL345::setMode(byte operationMode){
+	byte _b;
+    readFrom(ADXL345_FIFO_CTL, 1, &_b);
+	_b &=~(0b11000000);  //clearing bit 6 and 7 
+	_b |=(operationMode <<6); //setting op mode
+	
+	
+	//setRegisterBit(ADXL345_FIFO_CTL, 6, operationMode);
+	writeTo(ADXL345_FIFO_CTL, _b); 
+}
+// readback mode
+
+byte ADXL345::getMode(void){
+	byte _b;
+    readFrom(ADXL345_FIFO_CTL, 1, &_b);
+	_b &= 0b11000000;  //masking bit 6 and 7 
+	_b =(_b>>6); //setting op mode
+	return _b;
+}
+
+// set watermark
+
+void ADXL345::setWatermark(byte watermark){
+	byte _b, _w;
+	
+    readFrom(ADXL345_FIFO_CTL, 1, &_b);
+	_b &=(0b11100000);  //clearing bit 0 to 4
+	_w = watermark & (0b00011111);  //clearing highest 3 bits in waterlevel
+	_b |=_w; //setting waterlevel in operationmode register
+	//setRegisterBit(ADXL345_FIFO_CTL, 6, operationMode);
+	writeTo(ADXL345_FIFO_CTL, _b); 
+}
+
+// read how many samples in Fifi
+
+byte ADXL345::getFifoEntries(void){
+	byte _b;
+	readFrom(ADXL345_FIFO_STATUS, 1, &_b);
+	_b &=  0b00111111;
+
+	return _b;
+}
+
+void ADXL345::burstReadXYZ(int *x, int *y, int *z, byte samples) {
+	for (int i=0; i<samples; i++){
+		readFrom(ADXL345_DATAX0, ADXL345_TO_READ, _buff); //read the acceleration data from the ADXL345
+		x[i] = (short)((((unsigned short)_buff[1]) << 8) | _buff[0]);   
+		y[i] = (short)((((unsigned short)_buff[3]) << 8) | _buff[2]);
+		z[i] = (short)((((unsigned short)_buff[5]) << 8) | _buff[4]);
+	}
+}
+
+	
+	
 
 void print_byte(byte val){
     int i;
