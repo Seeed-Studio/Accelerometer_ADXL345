@@ -1,4 +1,4 @@
-## Accelerometer_ADXL345
+## Accelerometer_ADXL345  [![Build Status](https://travis-ci.com/Seeed-Studio/Accelerometer_ADXL345.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Accelerometer_ADXL345)
 
 
 ![image](https://statics3.seeedstudio.com/seeed/img/2016-11/GsPzr5xrvqzue5sH4ZomS1DE.jpg)
